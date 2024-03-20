@@ -1,0 +1,11 @@
+*.pyc
+bin/
+bin/*
+include/
+include/*
+lib/
+lib/*
+.venv/
+.venv/*
+instance/
+instance/*

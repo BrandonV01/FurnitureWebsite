@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/navbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/general.css')}}">
+    {% block page_css %}{% endblock %}
+    <title>{{title}}</title>
+</head>
+<body>
+    <nav class="nav-area">
+        <div class="top-nav">
+            {% if session['userID'] is not defined %}
+                {% include "partials/loggedOutHead.html" %}
+            {% else %}
+                {% include "partials/loggedInHead.html" %}
+            {% endif %}
+            
+        </div>
+    </nav>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="footerContainer">
+            <p class="copyright">© Furniture Store 2024</p>
+        </div>
+    </footer>
+    
+
+    {% block page_scripts %}{% endblock %}
+</body>
+</html>

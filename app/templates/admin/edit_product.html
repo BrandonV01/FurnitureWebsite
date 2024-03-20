@@ -1,0 +1,40 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin/admin_sidebar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin/create_form.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<form class="form-content" action="" method="POST" enctype="multipart/form-data">
+    <div class="input-field">
+        <p>Product Name:</p>
+        <input type="text" class="item-name" name="item-name" value="{{product.item_name}}">
+    </div>
+    
+    <div class="input-field">
+        <p id="description-text">Description:</p>
+        <textarea rows="6" cols="25" class="item-description" name="item-description">{{product.item_description}}</textarea>
+    </div>
+
+    <div class="input-field">
+        <p id="price-text">Enter Price:</p>
+        <input class="item-name" type="number" step="0.01" name="item-price" value="{{product.item_price}}"> 
+    </div>
+
+    <div class="input-field">
+        <p>Current Photo:</p>
+        <img class="product-image" src="/static/images/items/{{product.item_image}}">
+    </div>
+
+    <div class="input-field">
+        <p>Change Photo:</p>
+        <input class="file-input" type="file" name="files" accept="image/*">
+    </div>
+
+    <div>
+        <button type="submit" class="create-button" name="submit_button" value="CREATE">EDIT</button>
+    </div>
+</form>
+{% endblock %}

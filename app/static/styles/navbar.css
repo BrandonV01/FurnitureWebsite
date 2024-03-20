@@ -1,0 +1,111 @@
+.top-nav
+{
+    height:7em;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgb(216, 216, 216);
+    background-color: white;
+}
+
+.centering-nav
+{
+    display: flex;
+    align-items: center;
+    width: clamp(700px, 80%, 1450px);
+}
+.left-top-nav, .middle-top-nav, .right-top-nav
+{
+    display: flex;
+    align-items: center;
+}
+
+.left-top-nav, .right-top-nav
+{
+    justify-content: space-between;
+}
+
+.left-top-nav
+{
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.middle-top-nav
+{
+    flex: 1;
+    justify-content: center;
+
+}
+
+.right-top-nav
+{
+    width: 125px;
+    flex-shrink: 0;
+}
+
+.left-top-nav .store-icon
+{
+    background-color: white;
+    border: none;
+}
+
+.left-top-nav .nav-button
+{
+    background-color: white;
+    border: none;
+    font-size:  20px;
+    height: 30px;
+    width: 55px;
+}
+
+.left-top-nav .nav-button:hover
+{
+    text-decoration: underline;
+}
+
+.search-bar, .search-button
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #363534;
+    border-radius: 2px;
+}
+.search-bar
+{
+    padding:13px;
+    font-size: 14px;
+    width: clamp(100px, 75%, 600px);
+}
+
+.search-bar:focus
+{
+    outline: 2px solid transparent;
+}
+
+.search-bar:focus::placeholder
+{
+    color:transparent
+}
+
+.search-button
+{
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    padding-bottom: 13px;
+    margin-left: -2px;
+}
+
+.right-top-nav .nav-button
+{
+    background-color: white;
+    border: none;
+    font-size:  18px;
+    height: 60px;
+    width: 55px;
+}
+
+.store-icon, .nav-button
+{
+    cursor: pointer;
+}

@@ -1,0 +1,52 @@
+{% extends "main_base.html" %}
+
+
+{% block page_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="body-wrapper">
+        <div class="login-flex" action="#" method="POST">
+            <form class="login-side" action="#" method="POST">
+                <p class="section-header">Sign in</p>
+                <div class="email-address">
+                    <p>Email Address</p>
+                    <input type="email" name="login-email">
+                </div>
+                <div class="password-box">
+                    <p>Password</p>
+                    <input type="password" name="login-password">
+                </div>
+                <div>
+                    <button class="signin-button" type="submit" name="form-group" value="SignIn">Sign In</button>
+                </div>
+            </form>
+
+            <form class="signup-side" action="#" method="POST">
+                <p class="section-header">Sign Up!</p>
+                <div class="signup-name">
+                    <div class="first-name">
+                        <p>First Name *</p>
+                        <input type="text" name="signup-fname">
+                    </div>
+                    <div class="last-name">
+                        <p>Last Name *</p>
+                        <input type="text" name="signup-lname">
+                    </div>
+                </div>
+                <div class="email-address">
+                    <p>Email Address *</p>
+                    <input type="email" name="signup-email">
+                </div>
+                <div class="password-box">
+                    <p>Password *</p>
+                    <input type="password" name="signup-password">
+                </div>
+                <div>
+                    <button class="signup-button" type="submit" name="form-group" value="CreateAccount">Create Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

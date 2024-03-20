@@ -1,0 +1,37 @@
+{% extends "main_base.html" %}
+
+{% block page_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/shoppage.css')}}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="body-wrapper">
+        {% for tag in categories %}
+            <div class="shoppage-row">
+                <div class="shop-window-text-container">
+                    <a class="shop-window-text" href="/shop/{{tag.tag_name}}">
+                        {{tag.tag_name}} Furniture
+                    </a>
+                </div>
+                <div class="shop-category-window">
+                    <a class="shop-category-thumbnail-container" href="/shop/{{tag.tag_name}}">
+                            <img class="shop-category-thumbnail" src= "static/images/tags/{{tag.tag_image}}">
+                    </a>
+                    <div class="shop-subcategories">
+                        {% for sub in livingroomCategories %}
+                            <a href="/shop/{{tag.tag_name}}/{{sub.name}}">
+                                <div class="single-subcategory">
+                                    <img class="subcategory-thumbnail" src={{sub.url}}>
+                                    <p class="subcategory-text">
+                                        {{sub.name}}
+                                    </p>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

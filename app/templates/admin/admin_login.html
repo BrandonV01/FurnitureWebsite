@@ -1,0 +1,25 @@
+{% extends "admin/admin_base.html" %}
+
+
+{% block page_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin/admin_login.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="login-flex" action="#" method="POST">
+        <form class="login-side" action="#" method="POST">
+            <p class="section-header">Sign in</p>
+            <div class="email-address">
+                <p>Email Address</p>
+                <input type="email" name="login-email">
+            </div>
+            <div class="password-box">
+                <p>Password</p>
+                <input type="password" name="login-password">
+            </div>
+            <div>
+                <button class="signin-button" type="submit" name="form-group" value="SignIn">Sign In</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

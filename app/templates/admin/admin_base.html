@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/navbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/general.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin/admin_nav.css')}}">
+    {% block page_css %}{% endblock %}
+    <title>{{title}}</title>
+</head>
+<body>
+    <nav class="nav-area">
+        <div class="top-nav">
+            <div class="centering-nav">
+                <div class="left-top-nav">
+                    <a href="/home"><button class="store-icon">
+                        <img src="https://media.istockphoto.com/id/926251482/vector/furniture-store-home-furnishings-shop-single-flat-vector-icon-striped-awning-and-signboard.jpg?s=612x612&w=0&k=20&c=rt99TG7mSgB9HqkPrvpYlEHy_bjfpgC7kFp8TLb6CA0=" alt="store icon" width="90px" height="90px">
+                    </button></a>
+                    <a href="/home"><button class="nav-button">Home</button></a>
+                    <a href="/shop"><button class="nav-button">Shop</button></a>
+                    <a href="/sales"><button class="nav-button">Sales</button></a>
+                </div>
+                <div class="right-top-nav">
+                    <a href="/home">
+                        <button class="nav-button">
+                            HOME
+                        </button>
+                    </a>
+                </div>
+            </div> 
+        </div>
+    </nav>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        <div class="body-wrapper">
+            {% if session['userID'] is defined and session['userID'] == 1 %}
+            <div class="admin-sidebar">
+                <div class="sidebar-wrapper">
+                    <div class="manage-section">
+                        <a href="/admin/manage-orders">Manage Orders</a>
+                        <hr>
+                        <a href="/admin/manage-users">Manage Users</a>
+                        <hr>
+                        <a href="/admin/manage-products">Manage Products</a>
+                        <hr>
+                        <a href="/admin/manage-tags">Manage Category</a>
+                        <hr>
+                        <a href="/admin/manage-subtags">Manage Sub-Category</a>
+                    </div>
+                    
+                    <div class="create-section">
+                        <a href="/admin/create-product">Create Product</a>
+                        <hr>
+                        <a href="/admin/create-tag">Create Category</a>
+                        <hr>
+                        <a href="/admin/create-subtag">Create Sub-Category</a>
+                    </div>
+                    
+                    <div class="logout-section">
+                        <a href="/logout">Log Out</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <footer>
+        <div class="footerContainer">
+            <p class="copyright">© Furniture Store 2024</p>
+        </div>
+    </footer>
+    
+
+    {% block page_scripts %}{% endblock %}
+</body>
+</html>

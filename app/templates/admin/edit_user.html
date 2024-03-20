@@ -1,0 +1,25 @@
+{% extends "admin/admin_base.html" %}
+
+{% block page_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin/admin_sidebar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin/create_form.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<form class="form-content" action="" method="POST" enctype="multipart/form-data">
+    <div class="input-field">
+        <p>User Email:</p>
+        <input type="text" class="item-name" name="item-name" value="{{user.email}}">
+    </div>
+    
+    <div class="input-field">
+        <p id="description-text">Name:</p>
+        <textarea rows="6" cols="25" class="item-description" name="item-description">{{user.name}}</textarea>
+    </div>
+
+    <div>
+        <button type="submit" class="create-button" name="submit_button" value="CREATE">EDIT</button>
+    </div>
+</form>
+{% endblock %}

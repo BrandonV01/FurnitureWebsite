@@ -1,0 +1,49 @@
+{% extends "main_base.html" %}
+
+{% block page_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/homepage.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/carousel.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="homepage-background">
+    <div class="body-wrapper">
+        <div class="slideshow-container">
+            {% for x in urls %}
+                <div class="mySlides fade">
+                    <div class="carousel-numbertext">{{loop.index0 + 1}} / {{urls|length}}</div>
+                    <img src= "{{ url_for('static', filename=x)}}" style="width:100%">
+                </div>
+            {% endfor %}
+            
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        
+        <br>
+
+        <div style="text-align:center">
+            {% for x in urls %}
+                <span class="dot" onclick="currentSlide({{loop.index0 + 1}})"></span>
+            {% endfor %}
+        </div>
+
+        <div class="homepage-grid">
+            {% for tag in categories %}
+                <a href="/shop/{{tag.tag_name}}">
+                    <div class="category-window">
+                        <img class="category-thumbnail"" src= "static/images/tags/{{tag.tag_image}}"">
+                        <p class="window-text">
+                            Shop {{tag.tag_name}}
+                        </p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='scripts/carousel_logic.js')}}"></script>
+{% endblock %}

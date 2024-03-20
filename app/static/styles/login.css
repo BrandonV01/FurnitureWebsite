@@ -1,0 +1,99 @@
+.body-wrapper
+{
+    margin: 0px 20%;
+    margin-bottom: 15px;
+    height: 79.6vh;
+    height: 79.6lvh;
+}
+
+.login-flex
+{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 50px;
+}
+
+.section-header
+{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.login-side
+{
+    flex: 1;
+}
+
+.login-side .email-address
+{
+    margin-top: 47px;
+}
+
+.signin-button
+{
+    width: 100%;
+    padding: .6em;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #e43434;
+    border-style: none;
+    border-color: currentColor;
+    border-radius: 4px;
+}
+
+.signup-side
+{
+    flex: 1;
+}
+
+.signup-name
+{
+    display: flex;
+    column-gap: 40px;
+}
+
+.first-name
+{
+    flex: 1;
+}
+
+.last-name
+{
+    flex: 1;
+}
+
+.signup-button
+{
+    padding: .6em .8em;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #e43434;
+    border-style: none;
+    border-color: currentColor;
+    border-radius: 4px;
+}
+
+.first-name input, .last-name input, .email-address input, .password-box input
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #969696;
+    border-radius: 4px;
+    padding: 7px;
+    height: 20px;
+    width: calc(100% - 16px);
+    font-size: 16px;
+}
+
+.first-name p, .last-name p, .email-address p, .password-box p
+{
+    margin-bottom: 10px;
+}
+
+.signin-button, .signup-button
+{
+    margin-top: 2em;
+    cursor: pointer;
+}
