@@ -24,6 +24,23 @@
     </div>
 
     <div class="input-field">
+        <p>Choose category:</p>
+        <select class="create-dropdown" name="p_tag" id="p_tag" onchange="updateList('s_tag', this.value, {{subtags}});" autocomplete="off">
+            {% for tag in tags %}
+            <option value="{{tag.tag_name}}" {% if tag.tag_name == itemtag %}selected{% endif %}>{{tag.tag_name}}</option>
+            {% endfor %}
+        </select>
+        <p>Sub-category:</p>
+        <select class="create-dropdown" name="s_tag" id="s_tag">
+            {% for subtag in subtags %}
+                {% if subtag[1] == itemtag %}
+                    <option value="{{subtag[0]}}" {% if subtag[0] == itemsubtag %}selected{% endif %}>{{subtag[0]}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-field">
         <p>Current Photo:</p>
         <img class="product-image" src="/static/images/items/{{product.item_image}}">
     </div>
@@ -38,3 +55,7 @@
     </div>
 </form>
 {% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='scripts/product_create.js')}}"></script>
+{% endblock %}  

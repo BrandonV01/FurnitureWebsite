@@ -15,5 +15,7 @@ shop_pages = Blueprint('shop_pages', __name__, template_folder='templates')
 @shop_pages.route("/")
 def shop():
     tags = tag_list.query
-    return render_template("shop.html", title="Shop - Furniture Store", categories = tags, livingroomCategories = livingroomSubCategory)
+    subtags = subtag_list.query
+
+    return render_template("shop.html", title="Shop - Furniture Store", categories = tags, subtags = subtags)
     

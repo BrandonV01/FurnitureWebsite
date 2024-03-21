@@ -24,12 +24,30 @@
     </div>
 
     <div class="input-field">
+        <p>Choose category:</p>
+        <select class="create-dropdown" name="p_tag" id="p_tag" onchange="updateList('s_tag', this.value, {{subtags}});" autocomplete="off">
+            <option value="first_option">--SELECT--</option>
+            {% for tag in tags %}
+            <option value="{{tag.tag_name}}">{{tag.tag_name}}</option>
+            {% endfor %}
+        </select>
+        <p>Sub-category:</p>
+        <select class="create-dropdown" name="s_tag" id="s_tag">
+            <option value="first_option">--SELECT CATEGORY--</option>
+        </select>
+    </div>
+
+    <div class="input-field">
         <p>Choose Photo:</p>
-        <input class="file-input" type="file" name="files" accept="image/*"z>
+        <input class="file-input" type="file" name="files" accept="image/*">
     </div>
 
     <div>
         <button type="submit" class="create-button" name="submit_button" value="CREATE">CREATE</button>
     </div>
 </form>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='scripts/product_create.js')}}"></script>
 {% endblock %}

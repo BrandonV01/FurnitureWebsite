@@ -19,6 +19,15 @@
     </div>
 
     <div class="input-field">
+        <p>Choose parent tag:</p>
+        <select name="p_tag" id="p_tag">
+            {% for tag in tags %}
+            <option value="{{tag.tag_name}}">{{tag.tag_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-field">
         <p>Choose Photo:</p>
         <input class="file-input" type="file" name="files" accept="image/*"z>
     </div>

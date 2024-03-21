@@ -12,6 +12,7 @@
     display: flex;
     width: 600px;
     column-gap: 5px;
+    margin: 4px 0;
 }
 
 .input-field p
@@ -56,6 +57,7 @@
     margin-top: .5em;
     cursor: pointer;
     margin-right: 290px;
+    margin-bottom: 20px;    
 }
 
 .create-button:hover {
@@ -72,4 +74,10 @@
 .product-image
 {
     width: 50%;
+}
+
+.create-dropdown
+{
+    height: 50%;
+    align-self: center;
 }

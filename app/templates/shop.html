@@ -19,15 +19,17 @@
                             <img class="shop-category-thumbnail" src= "static/images/tags/{{tag.tag_image}}">
                     </a>
                     <div class="shop-subcategories">
-                        {% for sub in livingroomCategories %}
-                            <a href="/shop/{{tag.tag_name}}/{{sub.name}}">
+                        {% for subtag in subtags %}
+                            {% if subtag.parent_name == tag.tag_name %}
+                            <a href="/shop/{{tag.tag_name}}/{{subtags.subtag_name}}">
                                 <div class="single-subcategory">
-                                    <img class="subcategory-thumbnail" src={{sub.url}}>
+                                    <img class="subcategory-thumbnail" src="static/images/subtags/{{subtag.subtag_image}}">
                                     <p class="subcategory-text">
-                                        {{sub.name}}
+                                        {{subtag.subtag_name}}
                                     </p>
                                 </div>
                             </a>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>

@@ -9,6 +9,7 @@
 <table>
     <tr>
       <th>Subtag_Name</th>
+      <th>Parent_Name</th>
       <th>Description</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -16,6 +17,7 @@
     {% for subtag in subtag_list %}
     <tr>
         <td>{{subtag.subtag_name}}</td>
+        <td>{{subtag.parent_name}}</td>
         <td>{{subtag.subtag_description}}</td>
         <td>
             <a  href="{{ url_for('admin_pages.edit_subtag', subtag_id = subtag.subtag_id) }}">
