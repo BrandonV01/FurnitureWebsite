@@ -21,7 +21,7 @@
                     <div class="shop-subcategories">
                         {% for subtag in subtags %}
                             {% if subtag.parent_name == tag.tag_name %}
-                            <a href="/shop/{{tag.tag_name}}/{{subtags.subtag_name}}">
+                            <a href="/shop/{{tag.tag_name}}/{{subtag.subtag_name}}">
                                 <div class="single-subcategory">
                                     <img class="subcategory-thumbnail" src="static/images/subtags/{{subtag.subtag_image}}">
                                     <p class="subcategory-text">

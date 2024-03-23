@@ -20,7 +20,7 @@
 
     <div class="input-field">
         <p>Choose parent tag:</p>
-        <select name="p_tag" id="p_tag">
+        <select class="create-dropdown" name="p_tag" id="p_tag" autocomplete="off">
             {% for tag in tags %}
                 <option value="{{tag.tag_name}}" {% if tag.tag_name == subtag.parent_name %}selected{% endif %}>{{tag.tag_name}}</option>
             {% endfor %}

@@ -31,7 +31,7 @@
             {% endfor %}
         </select>
         <p>Sub-category:</p>
-        <select class="create-dropdown" name="s_tag" id="s_tag">
+        <select class="create-dropdown" name="s_tag" id="s_tag" autocomplete="off">
             {% for subtag in subtags %}
                 {% if subtag[1] == itemtag %}
                     <option value="{{subtag[0]}}" {% if subtag[0] == itemsubtag %}selected{% endif %}>{{subtag[0]}}</option>

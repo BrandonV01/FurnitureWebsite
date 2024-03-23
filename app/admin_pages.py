@@ -168,7 +168,7 @@ def edit_product(product_id):
             subtag = subtag_list.query.filter_by(subtag_name = request.form["s_tag"]).first()
 
             itemtagid.tag_id = tag.tag_id
-            itemsubtagid.subtag_id = 1
+            itemsubtagid.subtag_id = subtag.subtag_id
             
             if file_name != product.item_image and file_name != "":
                 product.item_image = file_name
@@ -209,15 +209,17 @@ def edit_product(product_id):
 def delete_product(product_id):
     if is_admin():
         product = item_info.query.get_or_404(product_id)
+        
+
+        producttags = item_tag.query.filter_by(item_id = product.id).all()
+        for tag in producttags:
+            db.session.delete(tag)
+
+        productsubtags = item_subtag.query.filter_by(item_id = product.id).all()
+        for subtag in productsubtags:
+            db.session.delete(subtag)
+
         db.session.delete(product)
-
-        producttag = item_tag.query.filter_by(item_id = product_id).all()
-        for pair in producttag:
-            db.session.delete(pair)
-
-        productsubtag = item_subtag.query.filter_by(item_id = product_id).all()
-        for pair in productsubtag:
-            db.session.delete(pair)
 
         db.session.commit()
         flash('The product has been deleted', 'success')
@@ -302,7 +304,13 @@ def edit_tag(tag_id):
 def delete_tag(tag_id):
     if is_admin():
         tag = tag_list.query.get_or_404(tag_id)
+        subtags = subtag_list.query.filter_by(parent_name = tag.tag_name)
+
+        for subtag in subtags:
+            db.session.delete(subtag)
+
         db.session.delete(tag)
+
         db.session.commit()
         flash('The category has been deleted', 'sucecess')
         return redirect(url_for('admin_pages.manage_tags'))
