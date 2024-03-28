@@ -38,6 +38,8 @@
                 {% endif %}
             {% endfor %}
         </select>
+        <input type="checkbox" id="salebox" name="salebox" value="onSale" {% if is_onSale %}checked{% endif %}>
+        <label for="salebox">On Sale?</label>
     </div>
 
     <div class="input-field">

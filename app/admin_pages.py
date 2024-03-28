@@ -1,5 +1,6 @@
 import os
 from flask import Blueprint, flash, render_template, request, redirect, url_for, session
+from sqlalchemy import and_
 from models.base_model import db
 from models.shared_models import *
 from werkzeug.utils import secure_filename
@@ -124,6 +125,11 @@ def create_product():
             itemsubtag = item_subtag(item.item_id, subtag.subtag_id)
             db.session.add(itemsubtag)
 
+            if "salebox" in request.form and form_cat != "Bathroom":
+                subtag = subtag_list.query.filter(and_(subtag_list.subtag_name.contains("Deals"), subtag_list.parent_name == form_cat)).first()
+                itemsubtag = item_subtag(item.item_id, subtag.subtag_id)
+                db.session.add(itemsubtag)
+
             db.session.commit()
             form_image.save(os.path.join('app/static/images/items', file_name))
             
@@ -156,6 +162,10 @@ def edit_product(product_id):
         product = item_info.query.get_or_404(product_id)
         itemtagid = item_tag.query.filter_by(item_id = product.item_id).first()
         itemsubtagid = item_subtag.query.filter_by(item_id = product.item_id).first()
+        try:
+            is_onSale = item_subtag.query.filter_by(item_id = product.item_id).limit(2)[1]
+        except:
+            is_onSale = False;
         if request.method == "POST":
             product.item_name = request.form["item-name"]
             product.item_description = request.form["item-description"]
@@ -175,6 +185,19 @@ def edit_product(product_id):
             
                 form_image.save(os.path.join('app/static/images/items', file_name))
             
+            if "salebox" in request.form and request.form["p_tag"] != "Bathroom":
+                subtag = subtag_list.query.filter(and_(subtag_list.subtag_name.contains("Deals"), subtag_list.parent_name == request.form["p_tag"])).first()
+
+                if is_onSale:
+                    is_onSale.subtag_id = subtag.subtag_id
+                else:
+                    itemsubtag = item_subtag(product.item_id, subtag.subtag_id)
+                    db.session.add(itemsubtag)   
+            else:
+                if is_onSale:
+                    db.session.delete(is_onSale)
+
+
             try:
                 db.session.commit()
                 flash('The product has been updated.', 'success')
@@ -195,11 +218,12 @@ def edit_product(product_id):
             for subtag in subtags:
                 if subtag.subtag_id == itemsubtagid.subtag_id:
                     itemsubtag = subtag.subtag_name
-
+            
+            
             form_subtags = []
             for subtag in subtags:
                 form_subtags.append([subtag.subtag_name, subtag.parent_name])
-            return render_template("edit_product.html", product = product, tags = tags, subtags = form_subtags, itemtag = itemtag, itemsubtag = itemsubtag, title="Edit Product - Furniture Store")
+            return render_template("edit_product.html", product = product, tags = tags, subtags = form_subtags, itemtag = itemtag, itemsubtag = itemsubtag, is_onSale = is_onSale, title="Edit Product - Furniture Store")
 
 
     else:
@@ -211,11 +235,11 @@ def delete_product(product_id):
         product = item_info.query.get_or_404(product_id)
         
 
-        producttags = item_tag.query.filter_by(item_id = product.id).all()
+        producttags = item_tag.query.filter_by(item_id = product.item_id).all()
         for tag in producttags:
             db.session.delete(tag)
 
-        productsubtags = item_subtag.query.filter_by(item_id = product.id).all()
+        productsubtags = item_subtag.query.filter_by(item_id = product.item_id).all()
         for subtag in productsubtags:
             db.session.delete(subtag)
 

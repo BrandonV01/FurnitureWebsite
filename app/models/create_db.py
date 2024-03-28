@@ -46,6 +46,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 1)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 6)
+    db.session.add(itemsubtag)
 
     item = item_info('Altari Sofa', "If style is the question, then the Altari sofa is the answer. Sporting clean lines and sleek track arms, the decidedly contemporary profile is enhanced with plump cushioning and a chenille-feel upholstery, so pleasing to the touch. Sure to play well with so many color schemes, this sofa in slate gray includes a pair of understated floral pattern pillows for fashionably fresh appeal."
                      , 499.99, "altari_sofa.webp")
@@ -63,6 +65,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 1)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 1)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 6)
     db.session.add(itemsubtag)
 
     item = item_info('Darcy Sofa', "Talk about fine lines and great curves. That’s the beauty of the Darcy sofa—made to suit your appreciation for clean, contemporary style. A striking flared frame, comfy pillow top armrests and an ultra-soft upholstery that holds up to everyday living complete this fashion statement."
@@ -83,6 +87,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 2)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 6)
+    db.session.add(itemsubtag)
 
     item = item_info('Stoneland Manual Reclining Sofa', "For those that love the cool look of leather but long for the warm feel of fabric, the Stoneland reclining sofa delivers both with ease. Its high-performance padded faux leather is remarkably durable and easy to clean, just the thing for family spaces. Channel-stitched back cushions provide indulgent lumbar support for maximum comfort—not to mention fashion-forward flair."
                      , 899.99, "stoneland_manual_recliner.webp")
@@ -100,6 +106,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 1)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 2)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 6)
     db.session.add(itemsubtag)
 
     item = item_info('Mindanao Dual Power Leather Reclining Sofa', "If sleek and modern is your style, the Mindanao power reclining sofa is ready to deliver a fresh look in comfort seating. With a plethora of power features and perfectly positioned scoop seating for unparalleled relaxation, this recliner will be your go-to spot for watching TV, reading or just drifting off to sleep."
@@ -120,6 +128,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 3)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 6)
+    db.session.add(itemsubtag)
 
     item = item_info('Alesandra Oversized Chair', "Decidedly modern with a sense of relaxed ease, the Alesandra oversized chair looks at home in so many different places and spaces. Providing a highly distinctive look: substantial track arms with curved cornering, wrapped t-cushioning and low-to-the-floor block feet in a warm wood-tone finish. Sporting a subtle chevron texture, the parchment-tone upholstery takes neutral to new heights."
                      , 699.99, "alesandra_oversized_chair.webp")
@@ -139,6 +149,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 4)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 6)
+    db.session.add(itemsubtag)
 
     item = item_info('Realyn Coffee Table', "Elevating the art of traditional cottage styling, the Realyn oval coffee table is sure to serve you beautifully for years to come. Antiqued two-tone aesthetic blends a chipped white with a distressed wood finished top for added charm. Classic cabriole legs and shapely lower shelf are a lovely twist. Decorative corbels add refinement."
                      , 339.99, "realyn_coffee_table.webp")
@@ -157,6 +169,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 1)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 5)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 6)
     db.session.add(itemsubtag)
 
     item = item_info('Yarlow 70" TV Stand', "Set your sights on modern farmhouse style with the Havalance entertainment center. Distressed two-tone treatment blends a weathered gray with vintage white for an utterly charming effect. Turned posts lend a hearty, substantial look that feels right at home, while plenty of open shelving makes the aesthetic anything but heavy."
@@ -178,6 +192,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 7)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 12)
+    db.session.add(itemsubtag)
 
     item = item_info('Willowton King Panel Bed', "The ultimate look for a beach cottage or shabby chic inspired retreat, the Willowton king panel bed carries you away to a dreamy time and place. Its driftwoody whitewash finish is wonderfully easy on the eyes. Faux plank detailing incorporates a classically rustic touch that's so homey and comforting. Mattress and foundation/box spring sold separately."
                      , 599.99, "willowton_king_panel_bed.webp")
@@ -196,6 +212,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 2)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 8)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 12)
     db.session.add(itemsubtag)
 
     item = item_info('Adason King Comforter Set', "Contemporary cool from head to toe. The Adason king comforter set provides a pop of pattern in blue and white for your restful retreat, recalling tile motifs. It reverses to a solid blue for ultimate versatility when it comes to relaxing in refinement."
@@ -216,6 +234,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 9)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 12)
+    db.session.add(itemsubtag)
 
     item = item_info('Finch 6 Drawer Dresser', "Practical and attractive, the Finch dresser blends seamlessly with modern decor and makes a smart addition to a bedroom. The six full-sized drawers slide easily and can be used to keep your clothes neat and organized. Sleek metal pulls in a brushed nickel-tone finish add to the streamlined aesthetic. Combine with other pieces in the collection to create a room that’s smart and stylish."
                      , 199.99, "finch_6_drawer_dresser.webp")
@@ -235,6 +255,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 10)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 12)
+    db.session.add(itemsubtag)
 
     item = item_info('Danziar 22" 2 Drawer Charging Nightstand', "Sophisticated style for the savvy shopper. The Danziar nightstand prioritizes affordable, on-trend design. Its subtle replicated texture recalls the natural beauty of wood, highlighting the clean-lined form. And a matte black finish savvily suits different approaches to modern aesthetics. Mix and match with light and bright hues, or pair with other dark tones for a moody look."
                      , 249.99, "danziar_22_2_drawer_charging_nightstand.webp")
@@ -253,6 +275,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 2)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 11)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 12)
     db.session.add(itemsubtag)
 
     item = item_info('Benches Upholstered Button-Tufted Storage Bench', "What a handsomely tailored upholstered storage bench. Black faux leather upholstery is elevated with button tufting. Lift the cushion to reveal ample storage for your pillows, throws and more."
@@ -389,6 +413,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 19)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 24)
+    db.session.add(itemsubtag)
 
     item = item_info('Rencott Dining Extension Table', "The Rencott dining extension table's classic yet contemporary good looks are hard to deny. Its geometric double pedestal base is effortlessly eye-catching, while a metal inlay on the tabletop offers a subtly striking touch. With a light oak finish and wire-brushed wood grain texture, this table lends an organic appeal to your delicious dining space ... or wherever family and guests gather."    
                      , 949.99, "D781-35-ANGLE-SW-P1-KO.webp")
@@ -407,6 +433,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 4)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 20)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 24)
     db.session.add(itemsubtag)
 
     item = item_info('Wildenauer Dining Chair (Set of 2)', "Raise the bar on modern farmhouse style with the Wildenaur dining side chair. Its casual good looks are accentuated with a handsome two-tone finish. A clean-lined silhouette with a modern ladderback design adds a fresh element, whether your style is vintage, country or eclectic. This richly crafted seating option serves up charm wherever folks decide to take a seat."    
@@ -427,6 +455,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 21)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 24)
+    db.session.add(itemsubtag)
 
     item = item_info('Rencott 63" Dining Bench', "The Rencott dining bench's classic yet contemporary good looks are hard to deny. Its softly cushioned seat in a woven fabric adds a comfortably cozy dimension to everyday seating or when guests gather. With a light oak finish and wire-brushed wood grain texture, this bench lends an organic appeal to your delicious dining space ... or wherever family and guests gather."    
                      , 190, "D781-00-ANGLE-SW-P1-KO.webp")
@@ -446,6 +476,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 22)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 24)
+    db.session.add(itemsubtag)
 
     item = item_info('Ashbryn Dining Server and Hutch', "The Ashbryn server and hutch delivers casual style with substance. A classic white finish and butcher block oak veneer top add a relaxed vibe to a delicious design that exudes a modern farmhouse aesthetic. Cabinets, drawers and open shelves provide ample storage and display space for dining essentials and decor. This charmingly curated piece is a show of great taste."    
                      , 1019.98, "D844-60-61-ANGLE-SW-P1-KO.webp")
@@ -464,6 +496,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 4)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 23)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 24)
     db.session.add(itemsubtag)
 
     item = item_info('Southern Enterprises Furniture Holmgren Rolling Wine Cart', "Gather friends and raise your glass with this modern bar cart—perfect for at-home get-togethers. Tray shelving ensures that glasses and utensils stay where they belong, and specially designed storage compartments easily hold wine glasses and bottles. Wheel this wine cart wherever the party may take you, from dining rooms and kitchens to open-concept living spaces."    
@@ -485,6 +519,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 25)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 30)
+    db.session.add(itemsubtag)
 
     item = item_info('Montia 67" Home Office Desk', "Sleek in its simplicity, the Montia home office desk encourages you to work or study in style. Its mixed-material design brings a trendy, urban chic feel to your work area. Functional features keep the desk top clutter-free—easily tuck away essentials in the three drawers, and conceal power cords with the open raceway."    
                      , 429.99, "H632-44-ANGLE-SW-P1-KO.webp")
@@ -503,6 +539,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 5)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 26)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 30)
     db.session.add(itemsubtag)
 
     item = item_info('Modway Veer Mesh Office Chair', "Chart new territory while seated from the comfort of the Veer chair. It features a form-fitted breathable mesh back and padded waterfall mesh seat to keep your back and thighs posture perfect. Easily flip the padded armrests up and away when not needed with the chair's versatile 90-degree rotating feature. Securely lock your back in place with a user-friendly seat tilt plus tension control knob, perfect for adjusting the chair to correctly fit your body weight. Adjust the seat height with a one-touch pneumatic lift, while hooded dual-wheel casters to ensure effortless gliding over carpeted offices."    
@@ -523,6 +561,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 27)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 30)
+    db.session.add(itemsubtag)
 
     item = item_info('Bernmore 63" Corner Shelf Bookcase', "Books, decorative pieces or personal photos shine when displayed on this Bernmore corner shelf. Five shelves allow you to achieve a layered style while also offering an efficient storage solution. The black finish makes this a versatile piece perfect for any room in the house."    
                      , 139.99, "A4000304-HEAD-ON-SW-P1-KO.webp")
@@ -542,6 +582,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 28)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 30)
+    db.session.add(itemsubtag)
 
     item = item_info('Camiburg 2 Drawer File Cabinet', "Whether you lean towards modern farmhouse or urban industrial design, the clean-lined profile of the Camiburg file cabinet is an essential component to any well-equipped home office. Sleek and slim, it’s just enough furniture to complete your space without overloading your look."    
                      , 129.98, "H283-12-ANGLE-SW-P1-KO.webp")
@@ -560,6 +602,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 5)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 29)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 30)
     db.session.add(itemsubtag)
 
     item = item_info('Techni Sport Gaming Chair', "Ergonomic, high back, sleek and in kawaii style, a perfect choice for your gaming room or game station. Designed to provide an extra comfort during your gaming sessions with its neck pillow and heart shaped plush cushion for lumbar support. Made with rich and high quality PU, memory foam seat and iridescent trim outlining the seat enhances your gaming experience. Features steel structure, pneumatic seat height adjustment, tilt with tension lock mechanism, 150 degree reclining mechanism, 2D adjustable white padded armrests and 5-star durable white nylon base, non-marking casters, we got you covered. This chair supports the weight limit of 250lbs and comes with limited warranty."    
@@ -581,6 +625,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 31)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 36)
+    db.session.add(itemsubtag)
 
     item = item_info('Beachcroft Nuvella Outdoor Sofa', "Sporting an easy-on-the-eyes look inspired by driftwood, the Beachcroft sofa elevates the art of indoor-outdoor living. Beautiful and durable enough for indoor and outdoor use, this high-style/low-maintenance sofa entices with plush, removable cushions wrapped in Nuvella® fabric that’s a breeze to keep clean."    
                      , 1199.99, "P791-838-ANGLE-SW-P1-KO.webp")
@@ -599,6 +645,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 6)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 32)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 36)
     db.session.add(itemsubtag)
 
     item = item_info('Emmeline Outdoor Lounge Chair Set of 2 with Nuvella Cushions', "Get back to nature with the relaxed styling of the Emmeline outdoor lounge chair with cushion. Crafted of MEGA TUFF™ HDPE material, it combines the exceptional durability and weather resistance you need with the “wood look” you love. Rest assured, the cushions are wrapped in comfortable and carefree Nuvella® fabric, leaving you plenty of time to sit back and smell the roses."    
@@ -619,6 +667,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 33)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 36)
+    db.session.add(itemsubtag)
 
     item = item_info('Town Wood Outdoor 3-Piece Dining Set', "Bring an uptown feel to an outdoor space with the Town Wood outdoor furniture set. Designed to comfortably seat four, this ultra-cool outdoor dining table and bench set a new standard in outdoor living. The tabletop and bench seats are richly crafted of acacia wood with wonderful tonal variation. Tubular steel legs are sleek, sturdy and slightly canted for an interesting angled effect."    
                      , 399.99, "P220-115-ANGLE-SW-P1-KO.webp")
@@ -638,6 +688,8 @@ def create_items():
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 34)
     db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 36)
+    db.session.add(itemsubtag)
 
     item = item_info('Solo Stove Ranger 2.0 15" Fire Pit', "This fire pit is sized for every adventure. Easily light up a smokeless fire anywhere life takes you thanks to its compact size."    
                      , 199.99, "P600009377_2.webp")
@@ -656,6 +708,8 @@ def create_items():
     itemtag = item_tag(getitemid.item_id, 6)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 35)
+    db.session.add(itemsubtag)
+    itemsubtag = item_subtag(getitemid.item_id, 36)
     db.session.add(itemsubtag)
 
     item = item_info('Bayberry Lane Outdoor Flamingo Garden Sculpture (Set of 2)', "Add coastal flair to your home with this vibrant set of two flamingo sculptures. These figurines are bound to impress your guests with their marvelous design and uniqueness. Made of iron and showcasing impressive hand-painted floral patterns and multicolor finishes, each feathered friend features detailed characteristics and metal feet that serve as a sturdy base. What a charming way to add an artistic twist to your favorite indoor or outdoor spaces."    
@@ -706,7 +760,7 @@ def create_subcategory():
     subtag = subtag_list('TV Stands', 'Living Room', 'subcategory for Living Room', 'tv_stands_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('Living Room Deals', 'Living Room', 'subcategory for Living Room', 'more_options_cat.jpg')
+    subtag = subtag_list('Living Room Deals', 'Living Room', 'subcategory for Living Room', 'living_room_deals_cat.jpg')
     db.session.add(subtag)
 
 
@@ -725,7 +779,7 @@ def create_subcategory():
     subtag = subtag_list('Bedroom Chairs', 'Bedroom', 'subcategory for Bedroom', 'bedroom_chairs_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('Bedroom Deals', 'Bedroom', 'subcategory for Bedroom', 'bedroom_more_options_cat.webp')
+    subtag = subtag_list('Bedroom Deals', 'Bedroom', 'subcategory for Bedroom', 'bedroom_deals_cat.png')
     db.session.add(subtag)
 
 
@@ -744,7 +798,7 @@ def create_subcategory():
     subtag = subtag_list('Bedroom Mirrors', 'Bathroom', 'subcategory for Bathroom', 'bathroom_mirrors_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('Bathroom Wastebaskets & Hampers', 'Bathroom', 'subcategory for Bathroom', 'bathroom_waste_hampers_cat.webp')
+    subtag = subtag_list('Wastebaskets & Hampers', 'Bathroom', 'subcategory for Bathroom', 'bathroom_waste_hampers_cat.webp')
     db.session.add(subtag)
 
 
@@ -763,7 +817,7 @@ def create_subcategory():
     subtag = subtag_list('Bar Furniture', 'Kitchen', 'subcategory for Kitchen', 'bar_furniture_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('Dining Deals', 'Kitchen', 'subcategory for Kitchen', 'kitchen_more_options_cat.webp')
+    subtag = subtag_list('Dining Deals', 'Kitchen', 'subcategory for Kitchen', 'kitchen_deals_cat.png')
     db.session.add(subtag)
 
 
@@ -782,7 +836,7 @@ def create_subcategory():
     subtag = subtag_list('Gaming', 'Office', 'subcategory for Office', 'gaming_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('Office Deals', 'Office', 'subcategory for Office', 'office_more_options_cat.webp')
+    subtag = subtag_list('Office Deals', 'Office', 'subcategory for Office', 'office_deals_cat.png')
     db.session.add(subtag)
 
 

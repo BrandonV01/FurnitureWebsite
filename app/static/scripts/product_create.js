@@ -11,7 +11,8 @@ function updateList(target_dropdown, origin_dropdown, subtag_arr){
         {
             if (subtag_arr[i][1] == origin_dropdown)
             {
-                l.innerHTML += "<option value='"+subtag_arr[i][0]+"'>"+subtag_arr[i][0]+"</option>";
+                if (subtag_arr[i][0].indexOf("Deals") === -1)
+                    l.innerHTML += "<option value='"+subtag_arr[i][0]+"'>"+subtag_arr[i][0]+"</option>";
             }
         }
     }

@@ -21,6 +21,12 @@
     text-align: right;
 }
 
+.input-field label
+{
+    width: 67px;
+    align-self: center;
+}
+
 .item-name, .item-description
 {
     flex: 1;
@@ -78,6 +84,5 @@
 
 .create-dropdown
 {
-    height: 50%;
     align-self: center;
 }
