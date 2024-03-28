@@ -93,6 +93,27 @@ def logout():
         flash('No user logged in', 'success')
         return redirect(url_for("login"))
 
+@app.route("/search/<string:term>")
+def search_term(term):
+    term = term.title()
+         
+    is_category = tag_list.query.filter_by(tag_name = term).first()
+    is_subcategory = subtag_list.query.filter_by(subtag_name = term).first()
+    if is_category:
+        return redirect(url_for("shop_pages.search_cat", cat_name = term))
+    elif is_subcategory:
+        return redirect(url_for("shop_pages.search_subcat",cat_name = is_subcategory.parent_name,  subcat_name = term))
+    else:
+        product_list = item_info.query.filter(item_info.item_name.contains(term) | item_info.item_description.contains(term))
+
+    if not product_list.first():
+        flash('Did not find matching item', 'success')
+        return redirect(url_for("shop_pages.search_all"))
+    
+    
+
+    return render_template("search.html", search_items = product_list, category = term, search_name = term, parentpage = "search", title="Search - Furniture Store")
+
 if __name__ == "__main__":
     with app.app_context():
         db.drop_all()

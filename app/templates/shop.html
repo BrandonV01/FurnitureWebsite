@@ -8,6 +8,7 @@
 {% block content %}
     <div class="body-wrapper">
         {% for tag in categories %}
+            {% if tag.tag_name != "Sale" %}
             <div class="shoppage-row">
                 <div class="shop-window-text-container">
                     <a class="shop-window-text" href="/shop/{{tag.tag_name}}">
@@ -34,6 +35,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

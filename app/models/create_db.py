@@ -48,7 +48,7 @@ def create_items():
     db.session.add(itemsubtag)
 
     item = item_info('Altari Sofa', "If style is the question, then the Altari sofa is the answer. Sporting clean lines and sleek track arms, the decidedly contemporary profile is enhanced with plump cushioning and a chenille-feel upholstery, so pleasing to the touch. Sure to play well with so many color schemes, this sofa in slate gray includes a pair of understated floral pattern pillows for fashionably fresh appeal."
-                     , 499.99, "maimz_sofa.webp")
+                     , 499.99, "altari_sofa.webp")
     db.session.add(item)
     getitemid = item_info.query.filter_by(item_name='Altari Sofa').first()
     itemtag = item_tag(getitemid.item_id, 1)
@@ -57,7 +57,7 @@ def create_items():
     db.session.add(itemsubtag)
 
     item = item_info('Miravel Sofa', "Marvel at the beauty of a subtle showstopper. The Miravel sofa appeals to those with a uniquely chic eye for comfort pieces. Its personality is one of playful simplicity, with curving, tapered arms incorporating movement into the structured silhouette. Whether in casual, contemporary or eclectic spaces, this sofa’s on-trend styling makes an impression."
-                     , 399.00, "maimz_sofa.webp")
+                     , 399.00, "miravel_sofa.webp")
     db.session.add(item)
     getitemid = item_info.query.filter_by(item_name='Miravel Sofa').first()
     itemtag = item_tag(getitemid.item_id, 1)
@@ -66,7 +66,7 @@ def create_items():
     db.session.add(itemsubtag)
 
     item = item_info('Darcy Sofa', "Talk about fine lines and great curves. That’s the beauty of the Darcy sofa—made to suit your appreciation for clean, contemporary style. A striking flared frame, comfy pillow top armrests and an ultra-soft upholstery that holds up to everyday living complete this fashion statement."
-                     , 399.99, "maimz_sofa.webp")
+                     , 399.99, "darcy_sofa.webp")
     db.session.add(item)
     getitemid = item_info.query.filter_by(item_name='Darcy Sofa').first()
     itemtag = item_tag(getitemid.item_id, 1)
@@ -370,10 +370,10 @@ def create_items():
     itemsubtag = item_subtag(getitemid.item_id, 18)
     db.session.add(itemsubtag)
 
-    item = item_info('happimess Curtis 8 Gallon Trash Can', "This classic trash can combines quality construction with modern styling for your kitchen or office. A satin chrome-tone finish suits any decor and the tall, narrow shape fits easily into a small space. Dispose of trash hands-free with the convenient step pedal."    
+    item = item_info('Happimess Curtis 8 Gallon Trash Can', "This classic trash can combines quality construction with modern styling for your kitchen or office. A satin chrome-tone finish suits any decor and the tall, narrow shape fits easily into a small space. Dispose of trash hands-free with the convenient step pedal."    
                      , 95.99, "A600065541_1.webp")
     db.session.add(item)
-    getitemid = item_info.query.filter_by(item_name='happimess Curtis 8 Gallon Trash Can').first()
+    getitemid = item_info.query.filter_by(item_name='Happimess Curtis 8 Gallon Trash Can').first()
     itemtag = item_tag(getitemid.item_id, 3)
     db.session.add(itemtag)
     itemsubtag = item_subtag(getitemid.item_id, 18)
@@ -706,7 +706,7 @@ def create_subcategory():
     subtag = subtag_list('TV Stands', 'Living Room', 'subcategory for Living Room', 'tv_stands_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('More Living Room Options', 'Living Room', 'subcategory for Living Room', 'more_options_cat.jpg')
+    subtag = subtag_list('Living Room Deals', 'Living Room', 'subcategory for Living Room', 'more_options_cat.jpg')
     db.session.add(subtag)
 
 
@@ -725,7 +725,7 @@ def create_subcategory():
     subtag = subtag_list('Bedroom Chairs', 'Bedroom', 'subcategory for Bedroom', 'bedroom_chairs_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('More Bedroom Options', 'Bedroom', 'subcategory for Bedroom', 'bedroom_more_options_cat.webp')
+    subtag = subtag_list('Bedroom Deals', 'Bedroom', 'subcategory for Bedroom', 'bedroom_more_options_cat.webp')
     db.session.add(subtag)
 
 
@@ -763,7 +763,7 @@ def create_subcategory():
     subtag = subtag_list('Bar Furniture', 'Kitchen', 'subcategory for Kitchen', 'bar_furniture_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('More Dining Options', 'Kitchen', 'subcategory for Kitchen', 'kitchen_more_options_cat.webp')
+    subtag = subtag_list('Dining Deals', 'Kitchen', 'subcategory for Kitchen', 'kitchen_more_options_cat.webp')
     db.session.add(subtag)
 
 
@@ -782,7 +782,7 @@ def create_subcategory():
     subtag = subtag_list('Gaming', 'Office', 'subcategory for Office', 'gaming_cat.webp')
     db.session.add(subtag)
 
-    subtag = subtag_list('More Office Options', 'Office', 'subcategory for Office', 'office_more_options_cat.webp')
+    subtag = subtag_list('Office Deals', 'Office', 'subcategory for Office', 'office_more_options_cat.webp')
     db.session.add(subtag)
 
 

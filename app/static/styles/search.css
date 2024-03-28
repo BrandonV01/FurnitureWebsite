@@ -1,0 +1,124 @@
+.body-wrapper {
+    margin: 0px 20%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+p {
+    margin: 20px 0px;
+}
+
+.search-url {
+    font-size: 14px;
+}
+
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.sort-section {
+    display: flex;
+    align-items: center;
+}
+
+.dropbtn {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0px;
+    width: 210px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.search-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-left: 1px solid #e8e8e8;
+    border-top: 1px solid #e8e8e8;
+    margin-bottom: 10px;
+}
+
+.category-window {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    height: 400px;
+    position: relative;
+}
+
+.product-image {
+    align-self: center;
+    text-align: center;
+    margin-top: 40px;
+    height: 180px;
+    line-height: 180px;
+}
+
+.category-thumbnail {
+    max-height: 180px;
+    max-width: 100%
+}
+
+.window-text {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.add-button {
+    font-size: 15px;
+    line-height: 29px;
+    white-space: nowrap;
+    background: #FFD814;
+    border-color: #FCD200;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    padding: 4px;
+    text-align: center;
+    border-radius: 100px;
+    width: 90%;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+    position: absolute;
+    bottom: 20px;
+}
