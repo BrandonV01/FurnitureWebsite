@@ -1,0 +1,66 @@
+{% extends "main_base.html" %}
+
+{% block page_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/search.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="body-wrapper">
+    <div class="search-url">
+        <p><a href="/home">Home</a> / <a href="/shop">Shop</a> / 
+            <a href="/{{parentpage}}/{{category}}">{{category}}</a>
+            {% if subcategory is defined %} / <a href="/shop/{{category}}/{{subcategory}}">{{subcategory}}</a>{% endif %}</p>
+    </div>
+    <div class="filter-bar">
+        <p>{{search_name}}</p>
+        <div class="sort-section">
+            <div>
+                <p>Sort By |</p>
+            </div>
+            <div class="dropdown">
+                <button onclick="dropdown()" class="dropbtn">Select Option <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                  </svg></button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="/{{parentpage}}/{{category}}{% if subcategory is defined %}/{{subcategory}}{% endif %}/sort/name-descending">Name Alphabetical</a>
+                  <a href="/{{parentpage}}/{{category}}{% if subcategory is defined %}/{{subcategory}}{% endif %}/sort/name-ascending">Name Reverse</a>
+                  <a href="/{{parentpage}}/{{category}}{% if subcategory is defined %}/{{subcategory}}{% endif %}/sort/price-descending">Price High to Low</a>
+                  <a href="/{{parentpage}}/{{category}}{% if subcategory is defined %}/{{subcategory}}{% endif %}/sort/price-ascending">Price Low to High</a>
+                </div>
+            </div> 
+        </div>
+    </div>
+    {% if search_name == 'All Deals' %}
+    <div class="category-bar">
+        {% for subtag in deal_categories %}
+            {% if 'Deals' in subtag.subtag_name %}
+            <div class="single-subcategory">
+                <a href="/shop/Deals/{{subtag.parent_name}}" class="cat-bar-anchor">
+                    <img class="subcategory-thumbnail" src="/static/images/subtags/{{subtag.subtag_image}}">
+                </a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="search-result-grid">
+    {% for item in search_items %}
+        <div class="category-window">
+            <a class="product-image" href="/shop/p/{{item.item_id}}">
+                <img class="category-thumbnail" src= "/static/images/items/{{item.item_image}}">
+            </a>
+            <div class="product-info">
+                <p><a class="window-text" href="/shop/p/{{item.item_id}}">{{item.item_name}}</a></p>
+                <p class="window-text">{{item.item_price}}</p>
+            </div>
+            <form class="add-to-cart" action="{{ url_for('shop_pages.add_to_cart', item_id = item.item_id) }}" method="POST">
+                <button class="add-button"">Add to Cart</button>
+            </form>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% endblock %}

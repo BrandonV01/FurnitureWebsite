@@ -17,6 +17,15 @@
         <p id="description-text">Description:</p>
         <textarea rows="6" cols="25" class="item-description" name="item-description">{{subtag.subtag_description}}</textarea>
     </div>
+
+    <div class="input-field">
+        <p>Choose parent tag:</p>
+        <select class="create-dropdown" name="p_tag" id="p_tag" autocomplete="off">
+            {% for tag in tags %}
+                <option value="{{tag.tag_name}}" {% if tag.tag_name == subtag.parent_name %}selected{% endif %}>{{tag.tag_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
     
     <div class="input-field">
         <p>Current Photo:</p>

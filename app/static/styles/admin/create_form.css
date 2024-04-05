@@ -12,12 +12,19 @@
     display: flex;
     width: 600px;
     column-gap: 5px;
+    margin: 4px 0;
 }
 
 .input-field p
 {
     width: 136px;
     text-align: right;
+}
+
+.input-field label
+{
+    width: 67px;
+    align-self: center;
 }
 
 .item-name, .item-description
@@ -56,6 +63,7 @@
     margin-top: .5em;
     cursor: pointer;
     margin-right: 290px;
+    margin-bottom: 20px;    
 }
 
 .create-button:hover {
@@ -72,4 +80,9 @@
 .product-image
 {
     width: 50%;
+}
+
+.create-dropdown
+{
+    align-self: center;
 }

@@ -6,36 +6,38 @@
 {% endblock %}
 
 {% block content %}
-<table>
-    <tr>
-      <th>Tag_Name</th>
-      <th>Description</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-    {% for tag in tag_list %}
-    <tr>
-        <td>{{tag.tag_name}}</td>
-        <td>{{tag.tag_description}}</td>
-        <td>
-            <a  href="{{ url_for('admin_pages.edit_tag', tag_id = tag.tag_id) }}">
-            <button class="edit-button" name="{{tag.tag_id}}-edit-button">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 24 24">
-                <path d="M11.5 20A.5.5 0 1011.5 21 .5.5 0 1011.5 20zM14.5 20A.5.5 0 1014.5 21 .5.5 0 1014.5 20zM17.5 20A.5.5 0 1017.5 21 .5.5 0 1017.5 20zM12.586 4.838L4.256 16.998c-.052.075-.082.164-.087.256L4 20.474c-.009.176.075.343.22.441C4.305 20.972 4.402 21 4.5 21c.072 0 .145-.016.212-.047l2.92-1.366c.081-.038.15-.097.201-.171L16.168 7.25 12.586 4.838zM16.733 6.424l1.222-1.784c.086-.125.11-.283.065-.429-.013-.041-.32-1.017-1.266-1.654-.945-.636-1.963-.553-2.008-.551-.149.013-.284.092-.369.216l-1.227 1.79L16.733 6.424z"></path>
-            </svg>
-            </button>
-            </a>
-        </td>
-        <td>
-            <button class="delete-button" onclick="openPopup2({{ tag.tag_id }})">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 30 30">
-                    <path d="M 13 3 A 1.0001 1.0001 0 0 0 11.986328 4 L 6 4 A 1.0001 1.0001 0 1 0 6 6 L 24 6 A 1.0001 1.0001 0 1 0 24 4 L 18.013672 4 A 1.0001 1.0001 0 0 0 17 3 L 13 3 z M 6 8 L 6 24 C 6 25.105 6.895 26 8 26 L 22 26 C 23.105 26 24 25.105 24 24 L 24 8 L 6 8 z"></path>
+<div class="table-wrapper">
+    <table>
+        <tr>
+          <th>Tag_Name</th>
+          <th>Description</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        {% for tag in tag_list %}
+        <tr>
+            <td>{{tag.tag_name}}</td>
+            <td>{{tag.tag_description}}</td>
+            <td>
+                <a  href="{{ url_for('admin_pages.edit_tag', tag_id = tag.tag_id) }}">
+                <button class="edit-button" name="{{tag.tag_id}}-edit-button">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M11.5 20A.5.5 0 1011.5 21 .5.5 0 1011.5 20zM14.5 20A.5.5 0 1014.5 21 .5.5 0 1014.5 20zM17.5 20A.5.5 0 1017.5 21 .5.5 0 1017.5 20zM12.586 4.838L4.256 16.998c-.052.075-.082.164-.087.256L4 20.474c-.009.176.075.343.22.441C4.305 20.972 4.402 21 4.5 21c.072 0 .145-.016.212-.047l2.92-1.366c.081-.038.15-.097.201-.171L16.168 7.25 12.586 4.838zM16.733 6.424l1.222-1.784c.086-.125.11-.283.065-.429-.013-.041-.32-1.017-1.266-1.654-.945-.636-1.963-.553-2.008-.551-.149.013-.284.092-.369.216l-1.227 1.79L16.733 6.424z"></path>
                 </svg>
-            </button>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+                </button>
+                </a>
+            </td>
+            <td>
+                <button class="delete-button" onclick="openPopup2({{ tag.tag_id }})">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 30 30">
+                        <path d="M 13 3 A 1.0001 1.0001 0 0 0 11.986328 4 L 6 4 A 1.0001 1.0001 0 1 0 6 6 L 24 6 A 1.0001 1.0001 0 1 0 24 4 L 18.013672 4 A 1.0001 1.0001 0 0 0 17 3 L 13 3 z M 6 8 L 6 24 C 6 25.105 6.895 26 8 26 L 22 26 C 23.105 26 24 25.105 24 24 L 24 8 L 6 8 z"></path>
+                    </svg>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 <div class="popup" id="popup">
     <h2>Are you sure you want to delete?</h2>
     <form id="popupForm" name="popupForm" action="" method="POST">

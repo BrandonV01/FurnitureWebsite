@@ -38,11 +38,13 @@ class item_info(db.Model):
 
 class user_cart(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user_info.id'), primary_key = True)
-    item_id = db.Column(db.Integer, db.ForeignKey('item_info.item_id'), nullable = False)
+    item_id = db.Column(db.Integer, db.ForeignKey('item_info.item_id'), primary_key = True)
+    cart_amount = db.Column(db.Integer, nullable = False)
 
-    def __init__(self, user, item):
+    def __init__(self, user, item, amount):
         self.user_id = user
         self.item_id = item
+        self.cart_amount = amount
 
 class tag_list(db.Model):
     tag_id = db.Column(db.Integer, primary_key = True)
@@ -56,16 +58,15 @@ class tag_list(db.Model):
         self.tag_image = url
 
 class subtag_list(db.Model):
-    tag_id = db.Column(db.Integer, primary_key = True)
     subtag_id = db.Column(db.Integer, primary_key = True)
     subtag_name = db.Column(db.String(50), nullable = False, unique = True)
+    parent_name = db.Column(db.String(50), db.ForeignKey('tag_list.tag_name'), nullable = False)
     subtag_description = db.Column(db.String(400), nullable = False)
     subtag_image = db.Column(db.String(150), nullable = False)
 
-    def __init__(self, parentid, id, name, description, url) -> None:
-        self.tag_id = parentid
-        self.subtag_id = id
+    def __init__(self, name, parentname, description, url) -> None:
         self.subtag_name = name
+        self.parent_name = parentname
         self.subtag_description = description
         self.subtag_image = url
 

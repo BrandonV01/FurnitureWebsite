@@ -8,10 +8,8 @@ main
 {
     display: flex;
     padding-top: 0px;
-    padding-bottom: 0px;
-    height: 80.6vh;
-    height: 80.6lvh;
     column-gap: 20px;
+    height: 100%
 }
 
 .admin-sidebar {
