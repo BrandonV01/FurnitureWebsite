@@ -44,7 +44,7 @@ def login():
                     ph.verify(db_pass.auth_password, form_password)
                     session['userID'] = found_user.id
                     flash('Successfully logged in!', 'success')
-                    return redirect(url_for("home"))
+                    return redirect(url_for("sync_cart"))
                 except:
                     flash('Unable to successfully login', 'success')
                     return redirect(url_for("login"))
@@ -92,6 +92,82 @@ def logout():
     else:
         flash('No user logged in', 'success')
         return redirect(url_for("login"))
+
+@app.route("/login/sync_cart")
+def sync_cart():
+    if 'Cart' in session:
+        item_cart = session['Cart']
+        cart = user_cart.query.filter_by(user_id = session['userID'])
+        
+        id_array = []
+        for item in item_cart:
+            id_array.append(item[0])
+        
+        for item in cart:
+            if item.item_id not in id_array:
+                item_cart.append([item.item_id, item.cart_amount])
+        session['Cart'] = item_cart
+        
+        for item in item_cart:
+            in_cart = user_cart.query.filter_by(user_id = session['userID'], item_id = item[0]).first()
+            if not in_cart:
+                cart = user_cart(session['userID'], item[0], item[1])
+                db.session.add(cart)
+                db.session.commit()
+        session.pop('Cart')
+        return redirect(url_for("sync_cart"))
+    else:
+        item_cart = []
+        cart = user_cart.query.filter_by(user_id = session['userID'])
+
+        for item in cart:
+            item_cart.append([item.item_id, item.cart_amount])
+
+        session['Cart'] = item_cart
+        return redirect(url_for("home"))
+
+@app.route("/cart")
+def shopping_cart():
+    if 'Cart' in session:
+        shop_cart = session['Cart']
+
+        item_ids = []
+        for item in shop_cart:
+            item_ids.append(item[0])
+        
+        item_list = item_info.query.filter(item_info.item_id.in_(item_ids))
+
+        return render_template("cart.html", item_list = item_list, shop_cart = shop_cart)
+    else:
+        return render_template("cart.html")
+
+@app.route("/cart/update_quantity/<int:item_id>/<int:quantity>")
+def shopping_cart_update(item_id, quantity):
+    item_cart = session['Cart']
+    for item in item_cart:
+        if item[0] == item_id:
+            item[1] = quantity
+            session['Cart'] = item_cart
+            if 'userID' in session: 
+                itemin_cart = user_cart.query.filter_by(user_id = session['userID'], item_id = item[0]).first()
+                itemin_cart.cart_amount = item[1]
+                db.session.commit()
+            flash("Item amount updated", "success")
+            return redirect(request.referrer)
+
+@app.route("/cart/delete/<int:item_id>")
+def shopping_cart_delete(item_id):
+    item_cart = session['Cart']
+    for idx, item in enumerate(item_cart):
+        if item[0] == item_id:
+            item_cart.pop(idx)
+            session['Cart'] = item_cart
+            if 'userID' in session: 
+                itemin_cart = user_cart.query.filter_by(user_id = session['userID'], item_id = item[0]).first()
+                db.session.delete(itemin_cart)
+                db.session.commit()
+            flash("Item deleted from cart", "success")
+    return redirect(url_for("shopping_cart"))
 
 @app.route("/search/<string:term>")
 def search_term(term):

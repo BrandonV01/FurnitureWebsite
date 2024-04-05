@@ -38,11 +38,13 @@ class item_info(db.Model):
 
 class user_cart(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user_info.id'), primary_key = True)
-    item_id = db.Column(db.Integer, db.ForeignKey('item_info.item_id'), nullable = False)
+    item_id = db.Column(db.Integer, db.ForeignKey('item_info.item_id'), primary_key = True)
+    cart_amount = db.Column(db.Integer, nullable = False)
 
-    def __init__(self, user, item):
+    def __init__(self, user, item, amount):
         self.user_id = user
         self.item_id = item
+        self.cart_amount = amount
 
 class tag_list(db.Model):
     tag_id = db.Column(db.Integer, primary_key = True)

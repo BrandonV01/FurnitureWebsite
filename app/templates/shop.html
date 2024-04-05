@@ -22,18 +22,18 @@
                     <div class="shop-subcategories">
                         {% for subtag in subtags %}
                             {% if subtag.parent_name == tag.tag_name %}
-                            {% if 'Deals' in subtag.subtag_name %}
-                            <a href="/shop/Deals/{{tag.tag_name}}">
-                            {% else %}
-                            <a href="/shop/{{tag.tag_name}}/{{subtag.subtag_name}}">
-                            {% endif %}
-                                <div class="single-subcategory">
-                                    <img class="subcategory-thumbnail" src="static/images/subtags/{{subtag.subtag_image}}">
-                                    <p class="subcategory-text">
-                                        {{subtag.subtag_name}}
-                                    </p>
-                                </div>
-                            </a>
+                                {% if 'Deals' in subtag.subtag_name %}
+                                <a href="/shop/Deals/{{tag.tag_name}}">
+                                {% else %}
+                                <a href="/shop/{{tag.tag_name}}/{{subtag.subtag_name}}">
+                                {% endif %}
+                                    <div class="single-subcategory">
+                                        <img class="subcategory-thumbnail" src="static/images/subtags/{{subtag.subtag_image}}">
+                                        <p class="subcategory-text">
+                                            {{subtag.subtag_name}}
+                                        </p>
+                                    </div>
+                                </a>
                             {% endif %}
                         {% endfor %}
                     </div>

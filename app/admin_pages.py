@@ -224,8 +224,6 @@ def edit_product(product_id):
             for subtag in subtags:
                 form_subtags.append([subtag.subtag_name, subtag.parent_name])
             return render_template("edit_product.html", product = product, tags = tags, subtags = form_subtags, itemtag = itemtag, itemsubtag = itemsubtag, is_onSale = is_onSale, title="Edit Product - Furniture Store")
-
-
     else:
         return redirect(url_for("admin_pages.admin"))
     

@@ -27,9 +27,22 @@
                   <a href="/{{parentpage}}/{{category}}{% if subcategory is defined %}/{{subcategory}}{% endif %}/sort/price-descending">Price High to Low</a>
                   <a href="/{{parentpage}}/{{category}}{% if subcategory is defined %}/{{subcategory}}{% endif %}/sort/price-ascending">Price Low to High</a>
                 </div>
-              </div> 
+            </div> 
         </div>
     </div>
+    {% if search_name == 'All Deals' %}
+    <div class="category-bar">
+        {% for subtag in deal_categories %}
+            {% if 'Deals' in subtag.subtag_name %}
+            <div class="single-subcategory">
+                <a href="/shop/Deals/{{subtag.parent_name}}" class="cat-bar-anchor">
+                    <img class="subcategory-thumbnail" src="/static/images/subtags/{{subtag.subtag_image}}">
+                </a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
     <div class="search-result-grid">
     {% for item in search_items %}
         <div class="category-window">
@@ -40,9 +53,9 @@
                 <p><a class="window-text" href="/shop/p/{{item.item_id}}">{{item.item_name}}</a></p>
                 <p class="window-text">{{item.item_price}}</p>
             </div>
-            <div class="add-to-cart">
-                <button class="add-button">Add to Cart</button>
-            </div>
+            <form class="add-to-cart" action="{{ url_for('shop_pages.add_to_cart', item_id = item.item_id) }}" method="POST">
+                <button class="add-button"">Add to Cart</button>
+            </form>
         </div>
     {% endfor %}
     </div>

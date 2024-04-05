@@ -1,0 +1,129 @@
+{% extends "main_base.html" %}
+
+{% block page_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/cart.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="body-wrapper">
+    <div class="cart-wrapper">
+        <div class="item-list">
+            {% if item_list is defined and item_list[0] %}
+            <div class="cart-title">
+                <div class="a-row">
+                    <h1>Shopping Cart</h1>
+                </div>
+                <div class="a-row">
+                    <button id="deselect-all" class="deselect-button" onclick="uncheck_boxes()">
+                        Deselect all items
+                    </button>
+                </div>
+            </div>
+            <div class="active-cart-form">
+                <div class="list-header">
+                    <div class="price-header">
+                        <span>Price</span>
+                    </div>
+                </div>
+                <div class="item-grid">
+                    {% for item in item_list %}
+                    <div class="item-wrapper">
+                        <div class="item-flex">
+                            <div class="item-checkbox">
+                                <input type="checkbox" class="check" name="" value="{{item.item_price}}" checked="">
+                            </div>
+                            <div class="item-thumbnail">
+                                <a href="/shop/p/{{item.item_id}}"><img class="item-img" src="/static/images/items/{{item.item_image}}"></a>
+                            </div>
+                            <div class="cart-info">
+                                <div class="item-info">
+                                    <div>
+                                        <a class="item-name" href="/shop/p/{{item.item_id}}">{{item.item_name}}</a> 
+                                    </div>
+                                    <div class="item-price">
+                                        ${{item.item_price}}
+                                    </div>
+                                </div>
+                                <div class="cart-options">
+                                    <div class="dropdown">
+                                        {% set ns = namespace(index=0) %}
+                                        {% for cart_item in shop_cart %}
+                                            {% if cart_item[0] == item.item_id %}
+                                                {% set ns.index = cart_item[1] %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        <button onclick="cart_dropdown({{item.item_id}})" class="dropbtn quantity_dropdown" value="{{ns.index}}">{% for cart_item in shop_cart %}
+                                            {% if cart_item[0] == item.item_id %}
+                                                QTY: {{ cart_item[1] }}
+                                            {% endif %}
+                                        {% endfor %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                                          </svg>
+                                        </button>
+                                        <div id="myDropdown{{item.item_id}}" class="dropdown-content">
+                                            <a href="/cart/delete/{{item.item_id}}">0(delete)</a>
+                                            {% for i in range(1,11) %}
+                                            <a href="/cart/update_quantity/{{item.item_id}}/{{i}}">{{i}}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div> 
+                                    <a class="delete-button" href="/cart/delete/{{item.item_id}}">
+                                        DELETE
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <div class="no-items-announcement">
+                <h1>Your Cart is Empty.</h1>
+                <p>You currently don't have any items added to your shopping cart. You can fill it with any of our amazing
+                    product you can see by going to our <a href="/home">homepage</a>, searching our <a href="/shop/Deals">current deals</a>,
+                     or shopping for <a href="/shop/all">all items</a>.
+                </p>
+            </div>
+            {% endif %}
+        </div>
+        
+        {% if item_list is defined and item_list[0] %}
+        <div class="cost-summary">
+            <form class="order-totals">
+                <table class="cost-table">
+                    <tr class="order-summary-label">
+                        <td colspan="2">
+                        Cart Summary
+                        </td>
+                    </tr>
+                    <tr class="order-subtotal">
+                        <td class="segment-title">Subtotal</td>
+                        <td class="segment-value" id="subtotal-value">$000.00</td>
+                    </tr>
+                    <tr class="order-sales-tax">
+                        <td class="segment-title">Taxes</td>
+                        <td class="segment-value">Calculated at checkout</td>
+                    </tr>
+                    <tr class="order-total">
+                        <td class="segment-title">Estimated Total</td>
+                        <td class="segment-value total-value" id="total-value">$000.00</td>
+                    </tr>
+                </table>
+                <button  class="checkout-button" type="submit" value="Secure Checkout" name="Secure Checkout">
+                    Continue to Checkout
+                </button>
+            </form>
+            <div class="summary-disclaimer">
+                <p><b>Your actual amount invoiced may be different from your order summary above.</b> The taxes stated in this order summary are only an estimate. Your final invoice before delivery may include a different tax amount. Furniture Store will authorize your card every 6 days until your items are shipped or delivered.</p>
+                <p>By continuing to checkout, you are agreeing to our Terms of Use & Privacy Policy</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='scripts/cart.js')}}"></script>
+{% endblock %}
