@@ -137,9 +137,9 @@ def shopping_cart():
         
         item_list = item_info.query.filter(item_info.item_id.in_(item_ids))
 
-        return render_template("cart.html", item_list = item_list, shop_cart = shop_cart)
+        return render_template("cart.html", item_list = item_list, shop_cart = shop_cart, title = "Cart - Furniture Store")
     else:
-        return render_template("cart.html")
+        return render_template("cart.html", title = "Cart - Furniture Store")
 
 @app.route("/cart/update_quantity/<int:item_id>/<int:quantity>")
 def shopping_cart_update(item_id, quantity):
@@ -168,6 +168,27 @@ def shopping_cart_delete(item_id):
                 db.session.commit()
             flash("Item deleted from cart", "success")
     return redirect(url_for("shopping_cart"))
+
+@app.route("/cart/checkout")
+def checkout():
+    return render_template("checkout.html")
+
+@app.route("/cart/order")
+def order_complete():
+    array = request.args.get('array', None)
+    mylist = [int(x) for x in array.split(',')]
+    for id in mylist:
+        item_cart = session['Cart']
+        for idx, item in enumerate(item_cart):
+            if item[0] == id:
+                item_cart.pop(idx)
+                session['Cart'] = item_cart
+                if 'userID' in session: 
+                    itemin_cart = user_cart.query.filter_by(user_id = session['userID'], item_id = item[0]).first()
+                    db.session.delete(itemin_cart)
+                    db.session.commit()
+    flash("Successfully Ordered Item(s)!", "success")
+    return redirect(url_for("home"))
 
 @app.route("/search/<string:term>")
 def search_term(term):

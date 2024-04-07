@@ -1,0 +1,377 @@
+main
+{
+    min-height: calc(100lvh - 6em);
+}
+
+h3
+{
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.top-nav
+{
+    height:6em;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgb(216, 216, 216);
+    background-color: white;
+}
+
+.centering-nav
+{
+    display: flex;
+    align-items: center;
+    width: clamp(700px, 70%, 1100px);
+}
+
+.left-top-nav
+{
+    flex-shrink: 0;
+}
+
+.middle-top-nav
+{
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-family: Open Sans,Arial,sans-serif;
+}
+
+.right-top-nav
+{
+    flex-shrink: 0;
+}
+
+.left-top-nav .store-icon
+{
+    background-color: white;
+    border: none;
+}
+
+.right-top-nav .nav-button
+{
+    background-color: white;
+    border: none;
+    font-size:  18px;
+    height: 60px;
+    width: 55px;
+}
+
+.store-icon, .nav-button
+{
+    cursor: pointer;
+}
+
+.checkout-wrapper {
+    display: flex;
+    column-gap: 20px;
+    margin: 20px 0px;
+}
+
+.checkout-list {
+    flex: 3;
+    background-color: #FFF;
+    height: fit-content;
+    font-family: Open Sans,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 1130px;
+    min-width: 708px;
+    padding: 0px 20px;
+}
+
+.option-cell
+{
+    height: fit-content;
+    margin-bottom: 10px;
+}
+
+.option-content
+{
+    display: flex;
+}
+
+.option-form
+{
+    margin-top: 10px;
+    flex: 1;
+    padding: 0 25% 0 0;
+}
+
+@media only screen and (max-width: 1530px) {
+    .option-form
+    {
+        padding: 0;
+    }
+}
+.address-name, .phone-number
+{
+    flex: 1;
+}
+
+.option-title
+{
+    margin-right: 2%;
+    min-height: 1px;
+    overflow: visible;
+}   
+
+.form-p
+{
+    margin: 5px 0px;
+}
+
+.form-input
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #969696;
+    border-radius: 4px;
+    padding: 4px;
+    margin-bottom: 10px;
+    height: 20px;
+    width: calc(100% - 16px);
+    font-size: 14px;
+}
+
+.address-person
+{
+    display: flex;
+    column-gap: 40px;
+}
+
+.address-broad
+{
+    display: flex;
+    column-gap: 40px;
+}
+
+.payment-method
+{
+    border-color: #D7D5D5;
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+.payment-label
+{
+    width: 7em;
+    display: inline-block;
+    text-align: end;
+}
+
+.payment-input
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #969696;
+    border-radius: 4px;
+    padding: 4px;
+    margin-bottom: 10px;
+    height: 20px;
+    font-size: 14px;
+}
+
+.large-input
+{
+    width: calc(50% - 16px);
+}
+
+.small-input
+{
+    width: calc(25% - 16px);
+}
+
+.item-row
+{
+    border-bottom: 1px solid #E7E7E7;
+    padding: 12px 0 12px 12px;
+}
+
+.info-block
+{
+    display: flex;
+    column-gap: 20px;
+}
+
+.delivery-info, .delivery-options
+{
+    flex: 1;
+}
+
+.delivery-info
+{
+    padding-left: 20px;
+}
+
+.dropbtn {
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    background: #F0F2F2;
+    border-radius: 7px;
+    border-color: #D5D9D9;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 66px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    bottom: 0px;
+}
+
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.cost-summary {
+    flex: 1;
+    background-color: #FFF;
+    min-width: 300px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 6px;
+}
+
+.order-totals
+{
+    margin: 10px;
+}
+
+.cost-table
+{
+    width: 98%;
+    margin-bottom: 10px;
+    font-family: Open Sans,Arial,sans-serif;
+}
+
+.order-summary-label
+{
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 2.25rem;
+    text-transform: none;
+    color: #363634 !important;
+}
+
+.order-summary-label td
+{
+    padding: 6px 0px;
+}
+
+.segment-title
+{
+    font-weight: 400;
+    font-size: .75rem;
+    text-transform: uppercase;
+    color: #525252;
+    padding: 6px 10px 6px 0px;
+}
+
+.total-value
+{
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+
+.segment-value
+{
+    text-align: right;
+}
+
+.cell-separator
+{
+    width: 23.448%;
+    padding: 3px;
+    padding-right: 0;
+}
+
+.divider
+{
+    background-color: transparent;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top: 1px solid #BBBFBF;
+    display: block;
+    height: 1px;
+    line-height: 19px;
+    margin: 0;
+}
+
+.order-button
+{
+    border: solid 1px #363634;
+    border-radius: 5px;
+    background: #363634;
+    height: 48px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
+
+.bottom-order
+{
+    text-align: center;
+}
+
+.bottom-button
+{
+    border: solid 1px #363634;
+    border-radius: 5px;
+    background: #363634;
+    height: 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: white;
+    width: 125px;
+    cursor: pointer;
+}
+
+.bottom-price
+{
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #525252;
+    padding: 6px 10px 6px 0px;
+}

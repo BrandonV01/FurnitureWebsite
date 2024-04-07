@@ -27,10 +27,16 @@
                 </div>
                 <div class="item-grid">
                     {% for item in item_list %}
+                    {% set ns = namespace(index=0) %}
+                    {% for cart_item in shop_cart %}
+                        {% if cart_item[0] == item.item_id %}
+                            {% set ns.index = cart_item[1] %}
+                        {% endif %}
+                    {% endfor %}
                     <div class="item-wrapper">
                         <div class="item-flex">
                             <div class="item-checkbox">
-                                <input type="checkbox" class="check" name="" value="{{item.item_price}}" checked="">
+                                <input type="checkbox" class="check" name="" value="{{item.item_price}}" item_name="{{item.item_name}}" item_img="{{item.item_image}}" item_amount="{{ns.index}}" item_id="{{item.item_id}}" checked="">
                             </div>
                             <div class="item-thumbnail">
                                 <a href="/shop/p/{{item.item_id}}"><img class="item-img" src="/static/images/items/{{item.item_image}}"></a>
@@ -46,19 +52,10 @@
                                 </div>
                                 <div class="cart-options">
                                     <div class="dropdown">
-                                        {% set ns = namespace(index=0) %}
-                                        {% for cart_item in shop_cart %}
-                                            {% if cart_item[0] == item.item_id %}
-                                                {% set ns.index = cart_item[1] %}
-                                            {% endif %}
-                                        {% endfor %}
-                                        <button onclick="cart_dropdown({{item.item_id}})" class="dropbtn quantity_dropdown" value="{{ns.index}}">{% for cart_item in shop_cart %}
-                                            {% if cart_item[0] == item.item_id %}
-                                                QTY: {{ cart_item[1] }}
-                                            {% endif %}
-                                        {% endfor %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <button onclick="cart_dropdown({{item.item_id}})" class="dropbtn quantity_dropdown" value="{{ns.index}}">QTY: {{ ns.index }}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                                             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                          </svg>
+                                            </svg>
                                         </button>
                                         <div id="myDropdown{{item.item_id}}" class="dropdown-content">
                                             <a href="/cart/delete/{{item.item_id}}">0(delete)</a>
@@ -90,7 +87,7 @@
         
         {% if item_list is defined and item_list[0] %}
         <div class="cost-summary">
-            <form class="order-totals">
+            <div class="order-totals">
                 <table class="cost-table">
                     <tr class="order-summary-label">
                         <td colspan="2">
@@ -110,10 +107,12 @@
                         <td class="segment-value total-value" id="total-value">$000.00</td>
                     </tr>
                 </table>
-                <button  class="checkout-button" type="submit" value="Secure Checkout" name="Secure Checkout">
+                <!-- <a href="/cart/checkout"> -->
+                <button class="checkout-button" type="submit" value="Secure Checkout" name="Secure Checkout" onclick="go_checkout()">
                     Continue to Checkout
                 </button>
-            </form>
+                <!-- </a> -->
+            </div>
             <div class="summary-disclaimer">
                 <p><b>Your actual amount invoiced may be different from your order summary above.</b> The taxes stated in this order summary are only an estimate. Your final invoice before delivery may include a different tax amount. Furniture Store will authorize your card every 6 days until your items are shipped or delivered.</p>
                 <p>By continuing to checkout, you are agreeing to our Terms of Use & Privacy Policy</p>
