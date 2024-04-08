@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/general.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/checkout.css')}}">
+    <title>Checkout - Furniture Store</title>
+</head>
+<body>
+    <nav class="nav-area">
+        <div class="top-nav">
+            <div class="centering-nav">
+                <div class="left-top-nav">
+                    <a href="/home"><button class="store-icon">
+                        <img src="https://media.istockphoto.com/id/926251482/vector/furniture-store-home-furnishings-shop-single-flat-vector-icon-striped-awning-and-signboard.jpg?s=612x612&w=0&k=20&c=rt99TG7mSgB9HqkPrvpYlEHy_bjfpgC7kFp8TLb6CA0=" alt="store icon" width="90px" height="90px">
+                    </button></a>
+                </div>
+                <div class="middle-top-nav">
+                    Checkout (X items)
+                </div>
+                <div class="right-top-nav">
+                    <a href="/cart">
+                        <button class="nav-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                            </svg>
+                            Cart
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        <div class="body-wrapper">
+            <div>This form will actually not do anything since I will not validate and use any of the information. However I should be able to just add the logic if some company actually needed to use this site.</div>
+            <div class="checkout-wrapper">
+                <div class="checkout-list">
+                    <div class="checkout-options">
+                        <div class="shipping-address option-cell">
+                            <div style="padding-left:35px">
+                                <div style="width:35px; margin-left:-35px; float:left;">
+                                    <span>
+                                        <h3>
+                                            1
+                                        </h3>
+                                    </span>
+                                </div>
+                                <div class="option-content">
+                                    <div class="option-title"><h3>Shipping Address</h3></div>
+                                    <div class="option-form">
+                                        <div class="address-person">
+                                            <div class="address-name">
+                                                <p class="form-p">Full Name (First & Last Name)</p>
+                                                <input class="form-input" type="text" name="address-name">
+                                            </div>
+                                            <div class="phone-number">
+                                                <p class="form-p">Phone Number</p>
+                                                <input class="form-input" type="text" name="address-phone-number">
+                                            </div>
+                                        </div>
+                                        <div class="address-street">
+                                            <p class="form-p">Address</p>
+                                            <input class="form-input" type="text" name="address-street" placeholder="Street address or P.O. Box">
+                                            <input class="form-input" type="text" name="address-apt" placeholder="Apt, suite, unit, building, floor, etc.">
+                                        </div>
+                                        <div class="address-broad">
+                                            <div class="address-city" style="flex: 2;">
+                                                <p class="form-p">City</p>
+                                                <input class="form-input" type="text" name="address-city">
+                                            </div>
+                                            <div class="address-state" style="flex: 1;">
+                                                <p class="form-p">State</p>
+                                                <input class="form-input" type="text" name="address-state">
+                                            </div>
+                                            <div class="address-zip" style="flex: 1;">
+                                                <p class="form-p">ZIP Code</p>
+                                                <input class="form-input" type="text" name="address-zip">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-method option-cell">
+                            <div style="padding-left:35px">
+                                <div style="width:35px;margin-left:-35px;float:left;">
+                                    <span>
+                                        <h3>
+                                            2
+                                        </h3>
+                                    </span>
+                                </div>
+                                <div class="option-content">
+                                    <div class="option-title"><h3>Payment Method</h3></div>
+                                    <div class="option-form">
+                                        <div class="payment-card">
+                                            <label class="payment-label" for="payment-card">Card number:</label>
+                                            <input class="payment-input large-input" type="text" name="payment-card" id="payment-card">
+                                        </div>
+                                        <div class="payment-name">
+                                            <label class="payment-label" for="payment-name">Name on card:</label>
+                                            <input class="payment-input large-input" type="text" name="payment-name" id="payment-name">
+                                        </div>
+                                        <div class="payment-expiration">
+                                            <label class="payment-label" for="expiration-month">Expiration date:</label>
+                                            <input class="payment-input small-input form-input" type="text" name="expiration-month" id="expiration-month" placeholder="Month">
+                                            <input class="payment-input small-input form-input" type="text" name="expiration-year" placeholder="Year">
+                                        </div>
+                                        <div class="payment-code">
+                                            <label class="payment-label" for="address-name">Security Code:</label>
+                                            <input class="payment-input small-input" type="text" name="address-name" id="address-name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-items option-cell">
+                            <div style="padding-left:35px">
+                                <div style="width:35px;margin-left:-35px;float:left; margin-top: -18px;">
+                                    <span>
+                                        <h3>
+                                            3
+                                        </h3>
+                                    </span>
+                                </div>
+                                <div>
+                                    <div class="option-title"><h3>Review items and shipping</h3></div>
+                                    <div id="item-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-order">
+                        <button class="bottom-button" onclick="order_complete()">Place Order</button>
+                        <span class="bottom-price" id="bottom-order-total-value">Order Total: $000.00</span>
+                    </div>
+                </div>
+                <div class="cost-summary">
+                    <div class="order-totals">
+                        <table class="cost-table">
+                            <tr class="order-summary-label">
+                                <td colspan="2">
+                                Order Summary
+                                </td>
+                            </tr>
+                            <tr class="order-item-total">
+                                <td class="segment-title">Items:</td>
+                                <td class="segment-value" id="item-total-value">$000.00</td>
+                            </tr>
+                            <tr class="order-shipping-tax">
+                                <td class="segment-title">Shipping & handling:</td>
+                                <td class="segment-value" id="shipping-tax-value">$0.00</td>
+                            </tr>
+                            <tr class="order-summary-separator">
+                                <td></td>
+                                <td class="cell-separator">
+                                    <hr class="divider">
+                                </td>
+                            </tr>
+                            <tr class="order-shipping-total">
+                                <td class="segment-title">Total before tax:</td>
+                                <td class="segment-value" id="shipping-total-value">$000.00</td>
+                            </tr>
+                            <tr class="order-sales-tax">
+                                <td class="segment-title">Taxes:</td>
+                                <td class="segment-value" id="tax-value">$0.00</td>
+                            </tr>
+                            <tr class="order-summary-separator">
+                                <td colspan="2" class="cell-separator">
+                                    <hr class="divider">
+                                </td>
+                            </tr>
+                            <tr class="order-total">
+                                <td class="segment-title">Order Total:</td>
+                                <td class="segment-value total-value" id="order-total-value">$000.00</td>
+                            </tr>
+                        </table>
+                        <button class="order-button" type="submit" onclick="order_complete()" value="Secure Checkout" name="Secure Checkout">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footerContainer">
+                <p class="copyright">© Furniture Store 2024</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='scripts/checkout.js')}}"></script>
+</body>
+</html>

@@ -54,7 +54,7 @@
                 <p class="window-text">{{item.item_price}}</p>
             </div>
             <form class="add-to-cart" action="{{ url_for('shop_pages.add_to_cart', item_id = item.item_id) }}" method="POST">
-                <button class="add-button"">Add to Cart</button>
+                <button class="add-button">Add to Cart</button>
             </form>
         </div>
     {% endfor %}
