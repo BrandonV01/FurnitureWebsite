@@ -3,13 +3,6 @@ from models.shared_models import *
 from models.base_model import db
 from sqlalchemy import and_
 
-class homeCategory():
-    def __init__(self, url, name):
-        self.url = url
-        self.name = name
-
-# find a way to get these subcategories and maybe even the main categories from the database
-livingroomSubCategory = [homeCategory("https://www.ashleyfurniture.com/on/demandware.static/-/Library-Sites-AshcommSharedLibrary/default/dw88c4e8f9/images/category/furniture/living-room/livingroom_landing_winter_20231101/LivingRoom_CLP_1A_DK.jpg", "Sofas & Couches"), homeCategory("https://www.ashleyfurniture.com/on/demandware.static/-/Library-Sites-AshcommSharedLibrary/default/dw186957e7/images/category/furniture/living-room/livingroom_landing_winter_20231101/LivingRoom_CLP_1C_DK.jpg", "Sectionals"), homeCategory("https://www.ashleyfurniture.com/on/demandware.static/-/Library-Sites-AshcommSharedLibrary/default/dw00953f58/images/category/furniture/living-room/livingroom_landing_winter_20231101/LivingRoom_CLP_1F_DK.jpg", "Recliners"), homeCategory("https://www.ashleyfurniture.com/on/demandware.static/-/Library-Sites-AshcommSharedLibrary/default/dwf24ea857/images/category/furniture/living-room/livingroom_landing_winter_20231101/LivingRoom_CLP_1H_DK.jpg", "Accent Chairs"), homeCategory("https://www.ashleyfurniture.com/on/demandware.static/-/Library-Sites-AshcommSharedLibrary/default/dw591af922/images/category/furniture/living-room/livingroom_landing_winter_20231101/LivingRoom_CLP_1K_DK.jpg", "Coffee Tables"), homeCategory("https://www.ashleyfurniture.com/on/demandware.static/-/Library-Sites-AshcommSharedLibrary/default/dwb34c3e19/images/category/furniture/living-room/livingroom_landing_winter_20231101/LivingRoom_CLP_1O_DK.jpg", "More Options")]
 
 shop_pages = Blueprint('shop_pages', __name__, template_folder='templates')
 
@@ -49,6 +42,39 @@ def add_to_cart(item_id):
         session['Cart'] = item_cart
         if 'userID' in session: 
             cart = user_cart(session['userID'], item_id, 1)
+            db.session.add(cart)
+            db.session.commit()
+        flash("Item added to cart", "success")
+        return redirect(request.referrer)
+    
+@shop_pages.route('/add_to_cart/<int:item_id>/<int:quantity>', methods=['POST'])
+def add_to_cart_quantity(item_id, quantity):
+    if 'Cart' in session:
+        item_cart = session['Cart']
+        for item in item_cart:
+            if item[0] == item_id:
+                item[1] += quantity
+                session['Cart'] = item_cart
+                if 'userID' in session: 
+                    itemin_cart = user_cart.query.filter_by(user_id = session['userID'], item_id = item[0]).first()
+                    itemin_cart.cart_amount = item[1]
+                    db.session.commit()
+                flash("Item added to cart", "success")
+                return redirect(request.referrer)
+        item_cart.append([item_id, quantity])
+        session['Cart'] = item_cart
+        if 'userID' in session: 
+            cart = user_cart(session['userID'], item_id, quantity)
+            db.session.add(cart)
+            db.session.commit()
+        flash("Item added to cart", "success")
+        return redirect(request.referrer)
+    else:
+        item_cart = []
+        item_cart.append([item_id, quantity])
+        session['Cart'] = item_cart
+        if 'userID' in session: 
+            cart = user_cart(session['userID'], item_id, quantity)
             db.session.add(cart)
             db.session.commit()
         flash("Item added to cart", "success")
@@ -226,3 +252,17 @@ def filtered_search_subcat(cat_name, subcat_name, filter):
         product_list = item_info.query.filter(item_info.item_id.in_(id_array)).order_by(item_info.item_price.desc())
 
     return render_template("search.html", search_items = product_list, category = cat_name, subcategory = subcat_name, search_name = subcat_name, parentpage = "shop", title="Search "+subcat_name+" - Furniture Store")
+
+@shop_pages.route("/p/<int:item_id>")
+def item_page(item_id):
+
+    item_information = item_info.query.filter_by(item_id = item_id).first()
+
+    itemtag = item_tag.query.filter_by(item_id = item_id).first()
+    itemsubtag = item_subtag.query.filter_by(item_id = item_id).first()
+
+    cat = tag_list.query.filter_by(tag_id = itemtag.tag_id).first()
+    subcat = subtag_list.query.filter_by(subtag_id = itemsubtag.subtag_id).first()
+
+
+    return render_template("item_page.html", item_information = item_information, category = cat.tag_name, subcategory = subcat.subtag_name)

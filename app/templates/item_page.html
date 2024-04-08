@@ -1,0 +1,53 @@
+{% extends "main_base.html" %}
+
+{% block page_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/item_page.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="body-wrapper">
+    <div class="search-url">
+        <p>
+            <a href="/home">Home</a> / <a href="/shop">Shop</a> / 
+            <a href="/shop/{{category}}">{{category}}</a> / 
+            <a href="/shop/{{category}}/{{subcategory}}">{{subcategory}}</a> / 
+            {{item_information.item_name}}
+        </p>
+    </div>
+    <div class="item-wrapper">
+        <div class="item-info">
+            <div>
+                <h1 style="margin-top: 0;">{{item_information.item_name}}</h1>
+            </div>
+            <div style="text-align: center;">
+                <img class="item-img" src="/static/images/items/{{item_information.item_image}}" style="width: 75%;">
+            </div>
+            <h3 class="description-header">About this item</h3>
+            <p class="description-content">
+                {{item_information.item_description}}
+            </p>
+        </div>
+        <div class="cart-wrapper">
+            <div class="cart-section">
+                <div>
+                    <span class="cart-text">Subtotal: </span>
+                    <span class="cart-text" id="cart-subtotal-value" item_price="{{item_information.item_price}}">$000.00</span>
+                </div>
+                <div class="quantity-area">
+                    <label class="qty-label cart-text">Qty:</label>
+                    <label class="minus"><input type="button" class="cart-minus-button" onclick="lower_quantity()" id="minus" name="minus" value="-"></label><input type="text" name="Quantity" class="quantity-select" id="quantity-select" value="1" min="1.0" max="10.0" readonly=""><label class="plus"><input type="button" class="cart-plus-button" onclick="increase_quantity()" id="plus" name="plus" value="+"></label>
+                </div>
+                <div class="add-to-cart">
+                    <form id="add-to-cart-form" action="/shop/add_to_cart/3/" item_id="{{item_information.item_id}}" method="POST">
+                        <button class="add-to-cart">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='scripts/item_page.js')}}"></script>
+{% endblock %}
