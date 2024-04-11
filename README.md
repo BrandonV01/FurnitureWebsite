@@ -13,3 +13,11 @@ There is an admin user created when the application is ran which has access to a
     <li>Doing smaller thing's I got lazy with (e.g. adding the number bubble to the cart to show how many items are in it, correcting way dropdown shows up, etc)</li>
     <li>Better adaptive layouts for smaller/mobile screens</li>
 </ul>
+
+<h3>Things to know</h3>
+<ul>
+    <li>The database that is created with the app will refresh to the base state I created when the server is ran. To remove this you can go to the main.py file and remove the db.drop_all() line.</li>
+    <li>The create_db.py file creates the base database in order for someone to quickly test the application. It creates tables for users, products, and categories. Most importantly it creates 3 users you can use.</li>
+    <li>2 user profiles which can be logged into by using useraccount@email.com or useraccount2@email.com as the email and for the password use us3rpassword and passw0rduser respectively</li>
+    <li>The last profile is an admin profile which can be logged into using adminaccount@email.com and adminpassw0rd. This is mainly to use the admin pages. </li>
+</ul>
